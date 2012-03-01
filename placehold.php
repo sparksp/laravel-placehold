@@ -56,15 +56,40 @@ class Placehold {
 	 * 		'width' => 150, 'height' => 200, 'text' => 'Avatar'
 	 * 	))->url();
 	 * </code>
-	 * 
+	 *
 	 * @param  array $opts
 	 * @return string
 	 */
 	public static function make(array $opts = array())
 	{
-		return with(new static)
-			->fill($opts);
+		$o = new static;
+		return $o->fill($opts);
 	}
+
+	/**
+	 * Return a placehold.it object.
+	 * 
+	 * @param  array $opts
+	 * @return Placehold
+	 */
+	public static function it(array $opts = array())
+	{
+		$opts['service'] = 'placehold.it';
+		return static::make($opts);
+	}
+
+	/**
+	 * Return a placekitten object.
+	 * 
+	 * @param  array $opts
+	 * @return Placehold
+	 */
+	public static function kitten(array $opts = array())
+	{
+		$opts['service'] = 'placekitten';
+		return static::make($opts);
+	}
+
 
 	/**
 	 * Fluid filler.
@@ -225,28 +250,6 @@ class Placehold {
 	public function service($service)
 	{
 		$this->service = $service;
-		return $this;
-	}
-
-	/**
-	 * Fluidly set service = placehold.it
-	 * 
-	 * @return Placehold
-	 */
-	public function it()
-	{
-		$this->service = 'placehold.it';
-		return $this;
-	}
-
-	/**
-	 * Fluidly set service = placekitten
-	 * 
-	 * @return Placehold
-	 */
-	public function kitten()
-	{
-		$this->service = 'placekitten';
 		return $this;
 	}
 
