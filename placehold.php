@@ -24,12 +24,12 @@ class Placehold {
 	public $height  = 150;
 
 	/**
-	 * @var long  $color
+	 * @var char[6]  $color
 	 */
 	public $color   = null;
 
 	/**
-	 * @var long  $bgcolor
+	 * @var char[6]  $bgcolor
 	 */
 	public $bgcolor = null;
 
@@ -127,7 +127,7 @@ class Placehold {
 	/**
 	 * Fluidly set color
 	 * 
-	 * @param  long  $color
+	 * @param  char[6]  $color
 	 * @return Placehold
 	 */
 	public function color($color)
@@ -139,7 +139,7 @@ class Placehold {
 	/**
 	 * Fluidly set bgcolor
 	 * 
-	 * @param  long  $color
+	 * @param  char[6]  $color
 	 * @return Placehold
 	 */
 	public function bgcolor($bgcolor)
@@ -270,7 +270,7 @@ class Placehold {
 				return $url;
 			break;
 			case 'placekitten':
-				$grey = str_repeat(substr($this->bgcolor, 0, 1), strlen($this->bgcolor));
+				$grey = $this->bgcolor ? str_repeat(substr($this->bgcolor, 0, 1), strlen($this->bgcolor)) : '000000';
 
 				$url = 'http://placekitten.com/'
 				if ($this->bgcolor == $grey) $url .= 'g/';
