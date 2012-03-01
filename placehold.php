@@ -150,6 +150,20 @@ class Placehold {
 	}
 
 	/**
+	 * Fluidly set width and height
+	 * 
+	 * @param  int $width
+	 * @param  int $height
+	 * @return Placehold
+	 */
+	public function size($width, $height)
+	{
+		$this->width  = $width;
+		$this->height = $height;
+		return $this;
+	}
+
+	/**
 	 * Fluidly set color
 	 * 
 	 * @param  char[6]  $color
